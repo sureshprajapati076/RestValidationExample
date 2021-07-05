@@ -19,5 +19,10 @@ public class Config {
 
     }
 
+    @Bean("customerProfile")
+    public List<String> getProfiles(){
+        return Arrays.asList("CUSTOMER NAME","PROFILE STATUS","POSITION");
+    }
+
 
 }

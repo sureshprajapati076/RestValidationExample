@@ -2,6 +2,7 @@ package com.example.demo.validator;
 
 import com.example.demo.domain.Person;
 import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -10,6 +11,9 @@ import java.util.List;
 
 
 public class PersonValidator implements ConstraintValidator<PersonValidate, Person> {
+
+    @Autowired
+    private List<String > customerProfile;
 
     @Override
     public boolean isValid(Person p, ConstraintValidatorContext context) {
@@ -26,13 +30,14 @@ public class PersonValidator implements ConstraintValidator<PersonValidate, Pers
             }
         }
         if (p.isSeniorExecutive()) {
-            if (p.getCompanyName() == null || p.getCompanyName().length() <= 4 || p.getCompanyName().length() >= 10) {
+            if (p.getCompanyName() == null || p.getCompanyName().length() <= 4 || p.getCompanyName().length() >= 10 || customerProfile.isEmpty()) {
                 messages.add("Invalid Company Name");
             }
         }
         if (p.isPoliticallyExposed() && p.isSeniorExecutive()) {
             messages.add("Can not enable both Flags for this use separate ones");
         }
+        p.setAge(36);
 
         if (!messages.isEmpty()) {
             HibernateConstraintValidatorContext hibernateContext =context.unwrap(HibernateConstraintValidatorContext.class);
