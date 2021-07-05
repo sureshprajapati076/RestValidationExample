@@ -4,7 +4,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
@@ -26,7 +25,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         error.setTimestamp(LocalDateTime.now());
         error.setStatus(status);
         error.setErrors(exception.getAllErrors().stream().map(objectError ->
-            ((FieldError) objectError).getField() + " => "+objectError.getDefaultMessage()
+                ((FieldError) objectError).getField() + " => " + objectError.getDefaultMessage()
         ).collect(Collectors.toList()));
         return new ResponseEntity(error, headers, status);
     }

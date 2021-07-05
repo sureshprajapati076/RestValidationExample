@@ -10,15 +10,14 @@ import java.util.List;
 @Component
 public class Config {
 
-	@Bean("personList")
-	public List<Person> getPersonList(){
-		return Arrays.asList(
-				new Person(),
-				new Person()
-				);
-	
-	}
+    @Bean("personList")
+    public List<Person> getPersonList() {
+        return Arrays.asList(
+                new Person(),
+                new Person()
+        );
 
-	
-	
+    }
+
+
 }

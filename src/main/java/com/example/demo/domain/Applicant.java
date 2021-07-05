@@ -8,8 +8,8 @@ import javax.validation.Valid;
 @Setter
 @Getter
 public class Applicant {
-   private String id;
-   @Valid
-   private ProfessionalAff professionalAff;
-   private boolean tested;
+    private String id;
+    @Valid
+    private ProfessionalAff professionalAff;
+    private boolean tested;
 }

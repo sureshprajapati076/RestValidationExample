@@ -14,18 +14,18 @@ import java.util.List;
 @RestController
 public class MainController {
 
-	@Autowired
-	private List<Person> personList;
-	
-	@GetMapping("/get")
-	public List<Person> getPerson() {
-		return personList;
-	}
+    @Autowired
+    private List<Person> personList;
 
-	@PostMapping("/get")
-	public School getListPerson(@RequestBody @Valid School school){
-		return school;
-	}
-	
-	
+    @GetMapping("/get")
+    public List<Person> getPerson() {
+        return personList;
+    }
+
+    @PostMapping("/get")
+    public School getListPerson(@RequestBody @Valid School school) {
+        return school;
+    }
+
+
 }

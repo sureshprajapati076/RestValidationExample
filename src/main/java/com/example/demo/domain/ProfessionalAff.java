@@ -10,9 +10,11 @@ import java.util.List;
 @Setter
 @Getter
 public class ProfessionalAff {
-    @Valid @NotNull
+    @Valid
+    @NotNull
     private Person p1;
-    @Valid @NotNull
+    @Valid
+    @NotNull
     private Person p2;
     @Valid @NotNull
     List<Person> personList;

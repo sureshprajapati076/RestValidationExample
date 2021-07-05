@@ -9,10 +9,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface PersonValidate {
-
     String message() default "default some Message";
-
     Class<?>[] groups() default {};
-
     Class<? extends Payload>[] payload() default {};
 }

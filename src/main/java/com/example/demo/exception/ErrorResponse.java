@@ -16,14 +16,9 @@ import java.util.List;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
-public class ErrorResponse
-{
-
+public class ErrorResponse {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime timestamp;
-
     private HttpStatus status;
-
     private List<String> errors;
-
 }

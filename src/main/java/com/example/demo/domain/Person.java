@@ -11,18 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 @PersonValidate
 public class Person {
-
     private String firstName;
-
     private String lastName;
-
-
     private int age;
     @JsonAlias("isPoliticallyExposed")
     private boolean isPoliticallyExposed;
     @JsonAlias("isSeniorExecutive")
     private boolean isSeniorExecutive;
-
     private String companyName;
-
 }

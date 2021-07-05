@@ -12,5 +12,4 @@ public class School {
     private Applicant applicant;
     private UserDetail userDetail;
     private String schoolId;
-
 }
