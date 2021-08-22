@@ -24,9 +24,16 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         ErrorResponse error = new ErrorResponse();
         error.setTimestamp(LocalDateTime.now());
         error.setStatus(status);
+
+//        error.setErrors(exception.getAllErrors().stream().map(objectError ->
+//                objectError.getObjectName()+"."+ ((FieldError) objectError).getField() + " => " + objectError.getDefaultMessage()
+//        ).collect(Collectors.toList()));
+
+
         error.setErrors(exception.getAllErrors().stream().map(objectError ->
-                ((FieldError) objectError).getField() + " => " + objectError.getDefaultMessage()
+                objectError.getObjectName() + " => " + objectError.getDefaultMessage()
         ).collect(Collectors.toList()));
+        System.out.println(exception.getAllErrors());
         return new ResponseEntity(error, headers, status);
     }
 }

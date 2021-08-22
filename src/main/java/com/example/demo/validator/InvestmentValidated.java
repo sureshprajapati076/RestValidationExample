@@ -8,11 +8,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = PersonValidator.class)
+
+@Constraint(validatedBy = InvestmentValidator.class)
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface PersonValidate {
+public @interface InvestmentValidated {
     String message() default "default some Message";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

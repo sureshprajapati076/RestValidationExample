@@ -1,0 +1,64 @@
+pershing:
+  whitelisted:
+    - apple
+    - ball
+    - cat
+  nonwhitelisted:
+    blacklist
+
+flags:
+  cz4: true
+  suitability: true
+  risk: false
+  domiant: true
+
+flag:
+  cz4:
+    - SI
+  suitability:
+    - PB
+  risk:
+    - SI
+    - PB
+    - TB
+  domiant:
+    - PB
+    - SI
+
+versions:
+  allowed:
+    allowedVersions:
+      - 9.44.15
+      - 9.44.20
+      - 9.44.35
+      - 9.44.45
+      - 9.44.55-9.44.65
+      - 9.44.76
+      - 9.44.80>
+
+
+
+
+
+
+
+version:
+  allowed:
+    - appId: android
+      appVersion:
+        - 9.45.15
+        - 9.45.20
+        - 9.45.35
+        - 9.45.45
+        - 9.45.55-9.45.65
+        - 9.45.76
+        - 9.45.80>
+    - appId: ios
+      appVersion:
+        - 9.44.15
+        - 9.44.20
+        - 9.44.35
+        - 9.44.45
+        - 9.44.55-9.44.65
+        - 9.44.76
+        - 9.44.80>
