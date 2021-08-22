@@ -5,7 +5,6 @@ import com.example.demo.config.AppVerionConfig;
 import com.example.demo.config.Flag;
 import com.example.demo.config.PershingConfig;
 import com.example.demo.domain.Electronics;
-import com.example.demo.domain.Elex;
 import com.example.demo.domain.InvestmentInfoVO;
 import com.example.demo.domain.MobileVersionVO;
 import com.example.demo.domain.Person;
@@ -15,7 +14,6 @@ import com.example.demo.validator.InvestmentInfoVOValidator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.artifact.versioning.ComparableVersion;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.BeanDefinitionValidationException;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
@@ -28,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.regex.Pattern;
 
 @RestController
 public class MainController {
