@@ -57,19 +57,7 @@ public class MainController {
         }
         ComparableVersion appVersionReceived = new ComparableVersion(appversion);
         for (String allowed : allowedVersion.getAllowedVersions()) {
-            if (allowed.contains(">")) {
-                allowed = StringUtils.substring(allowed, 0, allowed.length() - 1);
-                if (appVersionReceived.compareTo(new ComparableVersion(allowed)) >= 0) {
-                    return true;
-                }
-            } else if (allowed.contains("-")) {
-                String[] allow = allowed.split("\\-");
-                if (appVersionReceived.compareTo(new ComparableVersion(allow[0])) >= 0 && appVersionReceived.compareTo(new ComparableVersion(allow[1])) <= 0) {
-                    return true;
-                }
-            } else if (appVersionReceived.compareTo(new ComparableVersion(allowed)) == 0) {
-                return true;
-            }
+            if (checkVersion(appVersionReceived, allowed)) return true;
         }
         return false;
     }
@@ -77,7 +65,6 @@ public class MainController {
 
     @GetMapping("/testing")
     public boolean testing(@RequestHeader("appId") String appId, @RequestHeader("appVersion") String appVersion) {
-
         return checkVersion(appVersion, appId);
     }
 
@@ -94,19 +81,24 @@ public class MainController {
     private boolean allowedVersionCheck(String appVersion, List<String> allowedVersions) {
         ComparableVersion appVersionReceived = new ComparableVersion(appVersion);
         for (String allowed : allowedVersions) {
-            if (allowed.contains(">")) {
-                allowed = StringUtils.substring(allowed, 0, allowed.length() - 1);
-                if (appVersionReceived.compareTo(new ComparableVersion(allowed)) >= 0) {
-                    return true;
-                }
-            } else if (allowed.contains("-")) {
-                String[] allow = allowed.split("\\-");
-                if (appVersionReceived.compareTo(new ComparableVersion(allow[0])) >= 0 && appVersionReceived.compareTo(new ComparableVersion(allow[1])) <= 0) {
-                    return true;
-                }
-            } else if (appVersionReceived.compareTo(new ComparableVersion(allowed)) == 0) {
+            if (checkVersion(appVersionReceived, allowed)) return true;
+        }
+        return false;
+    }
+
+    private boolean checkVersion(ComparableVersion appVersionReceived, String allowed) {
+        if (allowed.contains(">")) {
+            allowed = StringUtils.substring(allowed, 0, allowed.length() - 1);
+            if (appVersionReceived.compareTo(new ComparableVersion(allowed)) >= 0) {
                 return true;
             }
+        } else if (allowed.contains("-")) {
+            String[] allow = allowed.split("\\-");
+            if (appVersionReceived.compareTo(new ComparableVersion(allow[0])) >= 0 && appVersionReceived.compareTo(new ComparableVersion(allow[1])) <= 0) {
+                return true;
+            }
+        } else if (appVersionReceived.compareTo(new ComparableVersion(allowed)) == 0) {
+            return true;
         }
         return false;
     }
