@@ -10,6 +10,7 @@ import com.example.demo.domain.MobileVersionVO;
 import com.example.demo.domain.Person;
 import com.example.demo.domain.ProfileWithSettlementOption;
 import com.example.demo.domain.School;
+import com.example.demo.exception.AppVersionException;
 import com.example.demo.validator.InvestmentInfoVOValidator;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.artifact.versioning.ComparableVersion;
@@ -49,8 +50,7 @@ public class MainController {
     @GetMapping("/allowVersion")
     public boolean allowVersion(@RequestParam("appVersion") String appversion) {
         if (StringUtils.isEmpty(appversion) || !appversion.matches("^\\d+(\\.\\d+)*$")) {
-            System.out.println("Error on appVersion");
-            return false;
+            throw new AppVersionException(appversion);
         }
         ComparableVersion appVersionReceived = new ComparableVersion(appversion);
         for (String allowed : allowedVersion.getAllowedVersions()) {
@@ -62,6 +62,9 @@ public class MainController {
 
     @GetMapping("/testing")
     public boolean testing(@RequestHeader("appId") String appId, @RequestHeader("appVersion") String appVersion) {
+        if (StringUtils.isEmpty(appVersion) || !appVersion.matches("^\\d+(\\.\\d+)*$")) {
+            throw new AppVersionException(appVersion);
+        }
         return checkVersion(appVersion, appId);
     }
 
