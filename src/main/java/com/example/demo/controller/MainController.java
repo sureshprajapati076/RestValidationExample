@@ -4,12 +4,7 @@ import com.example.demo.config.AllowedVersion;
 import com.example.demo.config.AppVerionConfig;
 import com.example.demo.config.Flag;
 import com.example.demo.config.PershingConfig;
-import com.example.demo.domain.Electronics;
-import com.example.demo.domain.InvestmentInfoVO;
-import com.example.demo.domain.MobileVersionVO;
-import com.example.demo.domain.Person;
-import com.example.demo.domain.ProfileWithSettlementOption;
-import com.example.demo.domain.School;
+import com.example.demo.domain.*;
 import com.example.demo.exception.AppVersionException;
 import com.example.demo.validator.InvestmentInfoVOValidator;
 import org.apache.commons.lang3.StringUtils;
@@ -45,6 +40,12 @@ public class MainController {
 
     @Autowired
     private AppVerionConfig appVerionConfig;
+
+    @PostMapping("/login")
+    public LoginResponse login(@RequestBody LoginRequest loginRequest){
+        System.out.println(loginRequest);
+        return new LoginResponse("200",loginRequest.toString());
+    }
 
 
     @GetMapping("/allowVersion")
