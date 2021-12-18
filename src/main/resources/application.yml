@@ -3,6 +3,7 @@ pershing:
     - apple
     - ball
     - cat
+    - monkey
   nonwhitelisted:
     blacklist
 
