@@ -13,4 +13,7 @@ import java.util.Map;
 @Data
 public class AppVerionConfig {
     private List<MobileVersionVO> allowed;
+    /*
+    this was added as part of delete things
+     */
 }
